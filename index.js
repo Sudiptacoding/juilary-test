@@ -62,8 +62,13 @@ const mongoose = require('mongoose');
 // Db cunnect
 const dbcunnect = async () => {
     try {
-        await mongoose.connect(`mongodb+srv://juilary:zOUbn7gxDjr2qaIV@cluster0.vdfwpbk.mongodb.net/juilaris?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
-        console.log('Db is connect')
+        await mongoose.connect('mongodb+srv://juilary:zOUbn7gxDjr2qaIV@cluster0.vdfwpbk.mongodb.net/juilaris?retryWrites=true&w=majority', {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        })
+            .then(() => console.log('Connected to MongoDB'))
+            .catch(error => console.error('Error connecting to MongoDB:', error));
+
     } catch (error) {
         console.log(error.message)
     }
